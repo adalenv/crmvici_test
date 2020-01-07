@@ -1,0 +1,6 @@
+exten => _55X.,1,AGI(agi-phone_number.agi,${EXTEN:2})
+exten => _55X.,n,Monitor(gsm,/var/spool/asterisk/manual/${CALLERID(num)}-${EXTEN}-${STRFTIME(${EPOCH},,%Y%m%d-%H%M%S)},m)
+exten => _55X.,n,Set(CALLERID(num)=442080895611)
+exten => _55X.,n,Set(Number=${PhoneNumber})
+exten => _55X.,n,Dial(SIP/voivp/${Number},,To)
+exten => _55X.,n,Hangup()
